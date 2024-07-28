@@ -1,26 +1,25 @@
 function solution(participant, completion) {
-    let answer = ''
+    let answer = '';
     let bag = new Map()
-    participant.forEach((name)=>{
-        if(bag.has(name)){
-            bag.set(name,bag.get(name)+1)
+    participant.forEach((item)=>{
+        if(bag.has(item)){
+            bag.set(item,bag.get(item)+1)
         }
         else{
-            bag.set(name,1)
+            bag.set(item,1)
         }
     })
-    completion.forEach((name)=>{
-        if(bag.get(name) === 1){
-            bag.delete(name)
+    completion.forEach((item)=>{
+        if(bag.get(item)===1){
+            bag.delete(item)
         }
         else{
-            bag.set(name,bag.get(name)-1)
+            bag.set(item,bag.get(item)-1)
         }
     })
-    
-    for(const[key,value] of  bag){
+    for(const[key,value] of bag){
         answer = key
     }
-    return answer
     
+    return answer;
 }
