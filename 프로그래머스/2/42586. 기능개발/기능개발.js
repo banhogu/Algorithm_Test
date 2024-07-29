@@ -1,25 +1,28 @@
 function solution(progresses, speeds) {
+    var answer = [];
     let arr = []
-    let answer = []
     
     progresses.forEach((item,i)=>{
-        arr.push(Math.ceil((100 - Number(item)) / Number(speeds[i])));
+        let a = 100 - Number(item)
+        arr.push(Math.ceil(a/speeds[i]))
     })
     
     let count = 1
     let max = arr[0]
     
     for(let i=1; i<arr.length; i++){
-        if(arr[i]>max){
+        if(arr[i] > max){
             answer.push(count)
+            count = 1
             max = arr[i]
-            count=1
         }
         else{
             count++
         }
     }
     answer.push(count)
-    return answer
+        
+    // console.log(arr)
     
+    return answer;
 }
