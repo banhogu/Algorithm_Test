@@ -1,17 +1,24 @@
 function solution(s){
-    let count = 0;
 
-    for(let i = 0; i < s.length; i++){
-        if(s[i] === "("){
-            count++;
+    let stack = []
+    let balanced = true
+    
+    for(let x of s){
+        if(x === '('){
+            stack.push(x)
         }
-        else if(s[i] === ")"){
-            count--;
-            if(count < 0){
-                return false;
+        else if(x === ')'){
+            if(s.length === 0 || stack[stack.length-1] !== '('){
+                balanced = false
+                break;
             }
+            stack.pop()
         }
     }
-    
-    return count === 0;
+    if(stack.length === 0 && balanced ){
+        return true
+    }
+    else{
+        return false
+    }
 }
